@@ -7,12 +7,14 @@ public class Food {
     private String name;
     private double price;
     private int calories;
+    private boolean mHiddenForRound;
 
-    public Food(String name, int calories, double price)
+    public Food(String name, int calories, double price, boolean hiddenForRound)
     {
         this.setName(name);
         this.setPrice(price);
         this.setCalories(calories);
+        this.setHiddenForRound(mHiddenForRound);
     }
 
     public String getName() {
@@ -37,5 +39,13 @@ public class Food {
 
     public void setCalories(int calories) {
         this.calories = calories;
+    }
+
+    public Boolean getHiddenForRound() {
+        return mHiddenForRound;
+    }
+
+    public void setHiddenForRound(Boolean hiddenForRound) {
+        this.mHiddenForRound = hiddenForRound;
     }
 }

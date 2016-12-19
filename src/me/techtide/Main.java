@@ -1,6 +1,6 @@
 package me.techtide;
 
-public class GameManager {
+public class Main {
     public static Integer mDayNumber = 1;
     public static Integer mCurrentCalories = 0;
     public static final Integer CALORIES_NECESSARY = 1500;
@@ -15,7 +15,7 @@ public class GameManager {
         System.out.print("Day: " + dayNumber);  // Print the amount of days lived to without dying of starvation.
         for(int i = 0; i <= spacing; i++) {
             System.out.print(" ");  // Add spacing depending on screen size;
-                                    // method needs to be made which gets the console strech size.
+            // method needs to be made which gets the console strech size.
         }
         System.out.println("Calories Used: " + caloriesLeft);   // Print the amount of calories used.
     }

@@ -1,6 +1,10 @@
-package me.techtide;
+package me.techtide.donotstarve;
 
-public class Main {
+/**
+ * Created by Greenie on 19/12/2016.
+ */
+
+public class Game {
     public static Integer mDayNumber = 1;
     public static Integer mCurrentCalories = 0;
     public static final Integer CALORIES_NECESSARY = 1500;

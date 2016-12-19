@@ -39,8 +39,6 @@ public class Game {
     }
 
     public static void handleUserInput() {
-        System.out.println("");
-
         // Print the food available.
         printFoodOptions();
 
@@ -56,10 +54,9 @@ public class Game {
         mMealNumber++;
         mFoodOptions.remove(mSelectedFoodChoice); // Remove this option from being used for the rest of the day (right now game,
                                                   // this is why the bug happens). LOOK HERE - BUG!
-        if(mMealNumber <= 4) {  // Equates to if it is equal to three.
+        if(mMealNumber >= 4) {
             // It's a new day.
             mDayNumber++;
-            mMealNumber = 0;
             updateStatistics();
             handleUserInput();
         } else {

@@ -19,13 +19,13 @@ public class Game {
     public static final Integer CALORIES_NECESSARY = 1500;
     public static Integer mMoney = 100;
     private static Integer mSelectedFoodChoice;
-    private static Integer mDayCourseNumber = 1;
+    private static Integer mMealNumber = 1;
 
     public static List<Food> mFoodOptions = new ArrayList<Food>();
 
     public static void main(String[] args) {
         // Print statistics derived from other classes.
-        printStatistics(mDayNumber, calculateCaloriesLeft(CALORIES_NECESSARY, mCurrentCalories), mDayCourseNumber);
+        printStatistics(mDayNumber, calculateCaloriesLeft(CALORIES_NECESSARY, mCurrentCalories), mMealNumber);
 
         // Add some food.
         Food bakedBeans = new Food("Baked Beans", 150, 2.50, false);
@@ -35,15 +35,12 @@ public class Game {
         Food oreos = new Food("Oreos x6", 270, 1.50, false);
         mFoodOptions.add(0, oreos);
 
-        if (mDayCourseNumber <= 3) {
-            handleFoodPrompt();
-        } else {
-            mDayNumber++;
-            updateStatistics();
-        }
+        handleUserInput();
     }
 
-    public static void handleFoodPrompt() {
+    public static void handleUserInput() {
+        System.out.println("");
+
         // Print the food available.
         printFoodOptions();
 
@@ -54,14 +51,26 @@ public class Game {
             e.printStackTrace();
         }
 
-        mCurrentCalories = mFoodOptions.get(mSelectedFoodChoice - 1).getCalories(); // set used calories
-        mFoodOptions.remove(mSelectedFoodChoice);
-        mDayCourseNumber++;
-        updateStatistics();
+        System.out.println(""); // New line.
+        mCurrentCalories = mFoodOptions.get(mSelectedFoodChoice - 1).getCalories(); // Set the used calories from the prompt.
+        mMealNumber++;
+        mFoodOptions.remove(mSelectedFoodChoice); // Remove this option from being used for the rest of the day (right now game,
+                                                  // this is why the bug happens). LOOK HERE - BUG!
+        if(mMealNumber <= 4) {  // Equates to if it is equal to three.
+            // It's a new day.
+            mDayNumber++;
+            mMealNumber = 0;
+            updateStatistics();
+            handleUserInput();
+        } else {
+            updateStatistics();
+            handleUserInput();
+        }
+
     }
 
     public static void updateStatistics() {
-        printStatistics(mDayNumber, calculateCaloriesLeft(CALORIES_NECESSARY, mCurrentCalories), mDayCourseNumber);
+        printStatistics(mDayNumber, calculateCaloriesLeft(CALORIES_NECESSARY, mCurrentCalories), mMealNumber);
     }
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");

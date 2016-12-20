@@ -1,6 +1,6 @@
 # Don't Starve
 
-This is a proof of concept text-based game, demonstrating some mechanics. 
+This is a proof of concept text-based game, demonstrating some mechanics. To be completed in the course of 3 days.
 
 ## People do. All the time.
 Starvation is an unfortunate problem that about 795 million pepole in the world undergo everyday - they don't have enough food to have an active life. 12.9% of our population is undernourished, hungry, and on the road to starvation if they do not get help.
